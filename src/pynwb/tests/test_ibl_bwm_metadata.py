@@ -52,10 +52,11 @@ class TestReadmeExample(TestCase):
     """
 
     def setUp(self) -> None:
-        self.filename = 'testfile.nwb'
+        self.filename = "testfile.nwb"
 
     def tearDown(self) -> None:
         import os
+
         if os.path.exists(self.filename):
             os.remove(self.filename)
 
@@ -71,11 +72,7 @@ class TestReadmeExample(TestCase):
             session_description="test session description",
             identifier=str(uuid4()),
             session_start_time=datetime(1970, 1, 1),
-            subject=Subject(
-                age="P50D",
-                description="example mouse",
-                sex="F",
-                subject_id="test_id")
+            subject=Subject(age="P50D", description="example mouse", sex="F", subject_id="test_id"),
         )
 
         # create our custom lab metadata
@@ -85,12 +82,12 @@ class TestReadmeExample(TestCase):
         nwbfile.add_lab_meta_data(lab_meta_data=lab_meta_data)
 
         # Write the file to disk
-        filename = 'testfile.nwb'
-        with NWBHDF5IO(path=filename, mode='w') as io:
+        filename = "testfile.nwb"
+        with NWBHDF5IO(path=filename, mode="w") as io:
             io.write(nwbfile)
 
         # Read the file from disk
-        with NWBHDF5IO(path=filename, mode='r') as io:
+        with NWBHDF5IO(path=filename, mode="r") as io:
             in_nwbfile = io.read()
             in_lab_meta_data = in_nwbfile.get_lab_meta_data(lab_meta_data.name)
             assert lab_meta_data.revision == in_lab_meta_data.revision

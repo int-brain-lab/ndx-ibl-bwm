@@ -13,15 +13,10 @@ if not os.path.exists(__spec_path):
 # Load the namespace
 load_namespaces(str(__spec_path))
 
-# TODO: Define your classes here to make them accessible at the package level.
-# Either have PyNWB generate a class from the spec using `get_class` as shown
-# below or write a custom class and register it using the class decorator
-# `@register_class("TetrodeSeries", "ndx-ibl-bwm")`
-TetrodeSeries = get_class("TetrodeSeries", "ndx-ibl-bwm")
+ibl_bwm_metadata = get_class("ibl_bwm_metadata", "ndx-ibl-bwm")
 
-# TODO: Add all classes to __all__ to make them accessible at the package level
 __all__ = [
-    "TetrodeSeries",
+    "ibl_bwm_metadata",
 ]
 
 # Remove these functions/modules from the package

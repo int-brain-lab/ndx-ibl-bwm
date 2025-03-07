@@ -7,5 +7,7 @@ namespaces:
   name: ndx-ibl-bwm
   schema:
   - namespace: core
+    neurodata_types:
+    - LabMetaData
   - source: ndx-ibl-bwm.extensions.yaml
   version: 0.1.0

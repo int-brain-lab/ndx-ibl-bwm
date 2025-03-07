@@ -21,23 +21,22 @@ def main():
         ],
     )
     ns_builder.include_namespace("core")
-    
-    # TODO: if your extension builds on another extension, include the namespace
-    # of the other extension below
-    # ns_builder.include_namespace("ndx-other-extension")
+    ns_builder.include_type("LabMetaData", namespace="core")
 
-    # TODO: define your new data types
-    # see https://pynwb.readthedocs.io/en/stable/tutorials/general/extensions.html
-    # for more information
-    tetrode_series = NWBGroupSpec(
-        neurodata_type_def="TetrodeSeries",
-        neurodata_type_inc="ElectricalSeries",
-        doc="An extension of ElectricalSeries to include the tetrode ID for each time series.",
-        attributes=[NWBAttributeSpec(name="trode_id", doc="The tetrode ID.", dtype="int32")],
+    ibl_bwm_ext = NWBGroupSpec(
+        name="ibl_bwm_metadata",
+        doc="Extension with IBL specific metadata for the brainwide map dataset",
+        neurodata_type_def="ibl_bwm_metadata",
+        neurodata_type_inc="LabMetaData",
+    )
+    ibl_bwm_ext.add_dataset(
+        name="revision",
+        doc="data revision, specified as a date",
+        dtype="text",
+        quantity="?",
     )
 
-    # TODO: add all of your new data types to this list
-    new_data_types = [tetrode_series]
+    new_data_types = [ibl_bwm_ext]
 
     # export the spec to yaml files in the spec folder
     output_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "spec"))

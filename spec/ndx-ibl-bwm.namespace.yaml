@@ -1,0 +1,11 @@
+namespaces:
+- author:
+  - Georg Raiser
+  contact:
+  - georg.raiser@internationalbrainlab.org
+  doc: extending NWB with IBL specific metadata for the brainwide map dataset
+  name: ndx-ibl-bwm
+  schema:
+  - namespace: core
+  - source: ndx-ibl-bwm.extensions.yaml
+  version: 0.1.0
